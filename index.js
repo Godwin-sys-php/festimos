@@ -7,7 +7,7 @@ const limit = require("express-rate-limit")
 require('dotenv').config();
 
 const app = express()
-const port = 3003
+const port = 3006
 
 
 const server = require('http').Server(app);

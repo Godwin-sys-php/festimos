@@ -10,6 +10,7 @@ require('dotenv').config();
 
 const app = express()
 const port = 3006
+//const port = 3003
 
 
 const server = require('http').Server(app);
@@ -18,6 +19,7 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 app.use(bodyParser.json({limit: '50mb', extended: true}));
 app.use(morgan('dev'))
 app.use(cors())
+app.set('view engine', 'ejs');
 
 app.use("/api/events", Events);
 app.use("/api/users", Users);
@@ -33,6 +35,7 @@ app.use(limit({
 
 
 //Default Index Page
+app.use("/tickets", express.static(__dirname + '/tickets'));
 app.use(express.static(__dirname + '/dist'));
 //Send all other items to index file
 app.get('*', (req, res) => res.sendFile(__dirname + '/dist/index.html'));

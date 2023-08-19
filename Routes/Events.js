@@ -2,7 +2,8 @@ const router = require("express").Router();
 const Events = require("../Controllers/Events");
 
 // Send ticket to customer
-router.post("/:slug", Events.getATicket);
+router.get("/:slug", Events.getATicket);
+router.get("/:slug/decline", Events.fail);
 
 // Scan ticket
 

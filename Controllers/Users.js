@@ -46,3 +46,17 @@ exports.login = async (req, res) => {
       .json({ error: true, message: "Une erreur inconnu a eu lieu" });
   }
 };
+
+exports.test = async (req, res) => {
+  try {
+    console.log(req.url);
+    console.log(req.params);
+    console.log(req.body);
+    return res.status(200).json({ status: req.params.slug })
+  } catch (error) {
+    console.log(error);
+    return res
+      .status(500)
+      .json({ error: true, message: "Une erreur inconnu a eu lieu" });
+  }
+}

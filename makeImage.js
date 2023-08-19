@@ -23,10 +23,11 @@ async function makeImage(
   price,
   expiration,
   event,
-  time
+  time,
+  uniqueCode,
 ) {
   try {
-    const image = await Jimp.read("template.png");
+    const image = await Jimp.read("template2.png");
     const font64 = await Jimp.loadFont(Jimp.FONT_SANS_64_BLACK);
     const font32 = await Jimp.loadFont(Jimp.FONT_SANS_32_BLACK);
 
@@ -36,6 +37,9 @@ async function makeImage(
 
     image.print(font32, 94, 940, location);
     image.print(font32, 100, 1040, date);
+
+    const textWidth2 = Jimp.measureText(font32, uniqueCode);
+    image.print(font32, image.bitmap.width / 2 - textWidth2 / 2, 325, uniqueCode);
 
     const token = jwt.sign(
       {

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Festimos</title>
+  <style>
+    body {
+      background-color: #1a1b1e;
+      color: white;
+      font-family: Arial;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1 style="text-align: center;">Merci d'avoir choisi Festimos !</h1>
+  <h3 style="text-align: center;">Vo(s) billet(s) ont été envoyé au numéro suivant: <%= phoneNumber %></h3>
+  <h3 style="text-align: center;">Nous vous recommandons d'en faire des captures d'écrans</h3>
+  <% for (let index in tickets) { %>
+    <img style="align-self: center;width: 20rem;" src="https://festimos.com/tickets/<%= tickets[index].id %>.png">
+    <br />
+    <br />
+  <% } %>
+</body>
+</html>

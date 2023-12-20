@@ -110,7 +110,7 @@ exports.getATicket = async (req, res) => {
           toInsert[index].name,
           event[0].location,
           capitalizeFirstLetter(
-            moment.unix(event[0].toTimestamp).format("ddd DD MMMM [à] HH:mm")
+            moment.unix(event[0].timestamp).format("ddd DD MMMM [à] HH:mm")
           ),
           toInsert[index].ticketId,
           toInsert[index].ticketType,
@@ -125,7 +125,7 @@ exports.getATicket = async (req, res) => {
         await Tickets.insertOne(toInsert[index]);
       }
 
-      let msg2Send = `Voici les liens vers vos billet pour La Can Des Champions: \n`;
+      let msg2Send = `Voici les liens vers vos billet pour La Casa: \n`;
       for (let index in toInsert) {
         msg2Send += `\n ${process.env.BASE_URL+toInsert[index].id+".png"} (${toInsert[index].name})`;
       }
